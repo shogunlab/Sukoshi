@@ -1,13 +1,25 @@
 # Sukoshi | 少し
 
 ## Overview
-Sukoshi is a proof-of-concept Python implant that leverages the [MQTT protocol](https://mqtt.org/) for C2 and uses AWS [IoT Core](https://aws.amazon.com/iot-core/) as infrastructure. It is intended to demonstrate the use of MQTT for C2 and the way in which AWS IoT Core can be integrated with an implant.
+Sukoshi is a proof-of-concept Python implant that leverages the [MQTT protocol](https://mqtt.org/) for C2 and uses AWS [IoT Core](https://aws.amazon.com/iot-core/) as infrastructure. It is intended to demonstrate the use of MQTT for C2 and the way in which IoT cloud services can be integrated with an implant.
 
-***Note: This project was not built to be used in a production setting. It is designed as a proof-of-concept and it intentionally omits many features that would be expected in a modern C2 project.***
+***Note: This project was not built to be used in a production setting. It is designed as a proof-of-concept and it intentionally omits many features that would be expected in a modern C2 project. For OPSEC considerations, see [here](#opsec-considerations).***
 
 ## Features
 * Automated setup and deployment of an implant using MQTT for C2. Can be used to easily test and analyze an implant leveraging this protocol.
 * Connects AWS IoT Core to an implant. Can be further expanded to integrate AWS services such as [IoT Analytics](https://aws.amazon.com/iot-analytics/) for logging/data analysis/visualization and [IoT Events](https://aws.amazon.com/iot-events/) for automated configuration/response to anomalous events.
+
+### IoT Services for C2
+C2 operators face many challenges such as having to manage a fleet of agents, implement a secure communications channel, quickly respond to events and log/analyze/visualize data. These same issues are being addressed by cloud providers who offer IoT services. As a result, they can be leveraged for C2 and implant management. This project uses AWS IoT Core as infrastructure, but other providers could possibly be re-purposed for C2 as well ([Azure IoT](https://azure.microsoft.com/en-ca/overview/iot/), [HiveMQ](https://www.hivemq.com/mqtt-cloud-broker/)).
+
+AWS has implemented sophisticated IoT services and capabilities that can be readily adapted for C2. As an example, telemetry from operators and implants can be stored, prepared, analyzed and fed into machine learning models using IoT Analytics. IoT Events is typically used to detect and respond to things such as temperature changes or motion detection. But, it could be used to detect and respond to implant events such as C2 channel disruption. The [IoT Device Defender](https://aws.amazon.com/iot-device-defender/) service can be used to run regular audits on deployed implants, check for anomalous activity and produce alerts.
+
+Telemetry gathered in IoT Core is not restricted to IoT services. Using [Rules for AWS IoT](https://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html), your implant data can be forwarded to many other services in the AWS ecosystem. You can do things like pass the data to Lambda functions, store it in DynamoDB or S3, send the data to Amazon Machine Learning to make predictions based on an Amazon ML model, start execution of a Step Functions state machine, and much more.
+
+I believe that this project only scratches the surface of what can be done with cloud IoT service providers. The time saved by not needing to implement these capabilities by yourself is enormous. You can instantly get access to sophisticated services that are highly benficial to C2 operators. I have not scratched the surface of what else could be possible using AWS or other providers, but I think it's a worthwhile area of research.
+
+#### Sampling of AWS IoT Core Actions
+![screen_0](https://i.imgur.com/kiRPsEj.png)
 
 ## Setup
 
@@ -85,13 +97,13 @@ Publishing message to topic 'c2/results': {"contents": "pong", "success": "true"
 
 ## Screenshots
 
-### Accessing the MQTT test client to send tasks/view results
+#### Accessing the MQTT test client to send tasks/view results
 ![screen_1](https://i.imgur.com/pqLg2pk.png)
 
-### Subscribing to topics
+#### Subscribing to topics
 ![screen_2](https://i.imgur.com/WyilvlF.png)
 
-### Publishing tasks and viewing results
+#### Publishing tasks and viewing results
 ![screen_3](https://i.imgur.com/zXFrBvv.png)
 
 ## Supported Tasks
@@ -141,6 +153,15 @@ Ask the implant to end the beaconing loop and disconnect from the endpoint.
   "arguments": ""
 }
 ```
+
+## OPSEC Considerations
+Due to the PoC nature of this project, it was not built with OPSEC in mind. However, I will outline some possible features that could be present in a production deployment of this kind of project:
+* Automated setup of redirectors to obscure the AWS IoT endpoint
+* Overhaul of command execution tasking to support stealthier implementations
+* Development of implant build using the AWS IoT Device SDK for C++
+* Leverage alternate IoT cloud service providers as a fallback
+* Variable beaconing using jitter
+* Encryption of tasking and results in the event that the communications channel is compromised
 
 ## Credits
 * Daniel Abeles ([@Daniel_Abeles](https://twitter.com/daniel_abeles)) and Moshe Zioni for their work while at Akamai Threat Research. Their MQTT-PWN project served as an excellent reference during development: 

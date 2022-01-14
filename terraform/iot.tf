@@ -89,7 +89,7 @@ resource "local_file" "sukoshi_public_key" {
   filename = "${path.module}/certs/${var.implant_name}.public.key"
 }
 
-# Attach AWS IoT cert generated above to the AWS IoT thing
+# Attach AWS IoT cert to the AWS IoT thing
 resource "aws_iot_thing_principal_attachment" "sukoshi_principal_att" {
   principal = aws_iot_certificate.sukoshi_cert.arn
   thing     = aws_iot_thing.sukoshi_iot_thing.name

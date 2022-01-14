@@ -71,7 +71,6 @@ resource "aws_iot_policy_attachment" "sukoshi_policy_att" {
   target = aws_iot_certificate.sukoshi_cert.arn
 }
 
-
 # Output certificate to /certs
 resource "local_file" "sukoshi_cert_pem" {
   content     = aws_iot_certificate.sukoshi_cert.certificate_pem

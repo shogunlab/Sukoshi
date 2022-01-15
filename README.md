@@ -18,9 +18,6 @@ Telemetry gathered in IoT Core is not restricted to IoT services. Using [Rules f
 
 I believe that this project only scratches the surface of what can be done with cloud IoT service providers. The time saved by not needing to implement these capabilities by yourself is enormous. You can instantly get access to sophisticated services that are highly benficial to C2 operators.
 
-#### Sampling of AWS IoT Core Actions
-![screen_0](https://i.imgur.com/kiRPsEj.png)
-
 ## Setup
 
 ### Python Requirements

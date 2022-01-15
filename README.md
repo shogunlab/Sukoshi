@@ -21,7 +21,7 @@ I believe that this project only scratches the surface of what can be done with 
 ## Setup
 
 ### Python Requirements
-The AWS IoT Python libraries are needed by the implant. Please execute the following to install the dependencies:
+The AWS IoT Python libraries are needed by the implant and can be installed with the steps below:
 1. On the command line, navigate to the root of the Sukoshi project
 2. Execute the following to install the dependencies:
 ```

@@ -155,7 +155,7 @@ Ask the implant to end the beaconing loop and disconnect from the endpoint.
 Due to the PoC nature of this project, it was not built with OPSEC in mind. However, I will outline some possible features that could be present in a production deployment of this kind of project:
 * Automated setup of redirectors to obscure the AWS IoT endpoint
 * Overhaul of command execution tasking to support stealthier implementations
-* Development of implant build using the AWS IoT Device SDK for C++
+* Development of implant build using the [AWS IoT Device SDK for C++](https://github.com/aws/aws-iot-device-sdk-cpp-v2)
 * Leverage alternate IoT cloud service providers as a fallback
 * Variable beaconing using jitter
 * Encryption of tasking and results in the event that the communications channel is compromised

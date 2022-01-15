@@ -16,7 +16,7 @@ AWS has implemented sophisticated IoT services and capabilities that can be read
 
 Telemetry gathered in IoT Core is not restricted to IoT services. Using [Rules for AWS IoT](https://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html), your implant data can be forwarded to many other services in the AWS ecosystem. You can do things like pass the data to Lambda functions, store it in DynamoDB or S3, send the data to Amazon Machine Learning to make predictions based on an Amazon ML model, start execution of a Step Functions state machine, and much more.
 
-I believe that this project only scratches the surface of what can be done with cloud IoT service providers. The time saved by not needing to implement these capabilities by yourself is enormous. You can instantly get access to sophisticated services that are highly benficial to C2 operators. I have not scratched the surface of what else could be possible using AWS or other providers, but I think it's a worthwhile area of research.
+I believe that this project only scratches the surface of what can be done with cloud IoT service providers. The time saved by not needing to implement these capabilities by yourself is enormous. You can instantly get access to sophisticated services that are highly benficial to C2 operators. I have only scratched the surface of what else could be possible using AWS or other providers.
 
 #### Sampling of AWS IoT Core Actions
 ![screen_0](https://i.imgur.com/kiRPsEj.png)

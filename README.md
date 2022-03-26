@@ -43,7 +43,7 @@ pip install -r requirements.txt
 The [AWS IoT C++ libraries](https://github.com/aws/aws-iot-device-sdk-cpp-v2) and [Boost Property Tree libraries](https://www.boost.org/doc/libs/1_78_0/doc/html/property_tree.html) are needed by the implant and can be installed with the steps below:
 
 #### Automated Installation
-I've used the script located [here](/scripts/install_aws_cpp_deps.ps1) to automate installation of the AWS IoT libaries on my host. I've used the script located [here](/scripts/install_boost_cpp_deps.ps1) to automate installation of vcpkg and the Boost Property Tree libaries on my host. You may be able to use these scripts to perform the same automated installs on your host or you can use them as a template for your own custom installation.
+I've used the script located [here](/scripts/install_aws_cpp_deps.ps1) to automate installation of the AWS IoT libraries on my host. I've used the script located [here](/scripts/install_boost_cpp_deps.ps1) to automate installation of vcpkg and the Boost Property Tree libaries on my host. You may be able to use these scripts to perform the same automated installs on your host or you can use them as a template for your own custom installation.
 
 #### Manual Installation
 
